@@ -6,7 +6,7 @@
 
 ## What exists today
 
-- `tarmac::acquisition` namespace and typed C++20 interfaces.
+- `tarmac::DataAcquisition` namespace and typed C++20 interfaces.
 - `devices/DeviceAdapter.hpp`: synchronous, typed device-read extension point.
 - `services/AcquisitionService.hpp`: explicit, one-shot acquisition coordination.
 - `monitoring/AcquisitionMonitor.hpp`: nonthrowing observation of read outcomes.

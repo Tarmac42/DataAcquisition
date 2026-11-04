@@ -3,7 +3,7 @@
  */
 #pragma once
 #include <chrono>
-namespace tarmac::acquisition {
+namespace tarmac::DataAcquisition {
 /** @brief Value configuration for a future periodic sampling adapter.
  * Interval uses a monotonic duration, not UTC time. This value creates no scheduler,
  * sleeps or background thread. Services store a copy; updates require reconstruction.

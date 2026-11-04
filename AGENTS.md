@@ -16,3 +16,7 @@ Build with CMake, run CTest, check installed-package consumption where applicabl
 and run git diff --check. Verify Linux and macOS CI; report actual results.
 Use isolated fixtures; do not access production archives or hardware in tests.
 Develop subsequent changes on feature branches and stop for review before merging.
+
+Public API convention: use namespace `tarmac::DataAcquisition` and matching
+`<tarmac/DataAcquisition/...>` include paths. `tarmac` denotes ownership,
+not a dependency on a separate Tarmac library.

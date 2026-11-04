@@ -2,10 +2,10 @@
  * @brief One-shot acquisition coordination independent of input and storage adapters.
  */
 #pragma once
-#include <tarmac/acquisition/config/SamplingConfig.hpp>
-#include <tarmac/acquisition/devices/DeviceAdapter.hpp>
-#include <tarmac/acquisition/monitoring/AcquisitionMonitor.hpp>
-namespace tarmac::acquisition {
+#include <tarmac/DataAcquisition/config/SamplingConfig.hpp>
+#include <tarmac/DataAcquisition/devices/DeviceAdapter.hpp>
+#include <tarmac/DataAcquisition/monitoring/AcquisitionMonitor.hpp>
+namespace tarmac::DataAcquisition {
 /** @brief Explicitly composed synchronous acquisition operation.
  * @tparam Sample Owning typed sample supplied by a device adapter.
  * Borrows device and monitor, both of which must outlive this service and all calls.
