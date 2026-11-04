@@ -2,7 +2,7 @@
  * @brief Synchronous observation of device-read outcomes without an event bus.
  */
 #pragma once
-namespace tarmac::acquisition {
+namespace tarmac::DataAcquisition {
 /** @brief Borrowed operational observer; implementations own any diagnostic state.
  * Invoked synchronously on the service caller's thread. Must not throw, reenter
  * the service or retain references to it. No global state or implicit threading.

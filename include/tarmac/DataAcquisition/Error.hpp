@@ -3,7 +3,7 @@
  */
 #pragma once
 #include <stdexcept>
-namespace tarmac::acquisition {
+namespace tarmac::DataAcquisition {
 /** @brief Owning diagnostic for device or acquisition failures.
  * Thread-independent values; adapters may derive specific error types. Allocation
  * and configuration errors remain distinguishable and are never silently retried.

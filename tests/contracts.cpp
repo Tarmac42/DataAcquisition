@@ -1,8 +1,8 @@
 /** @file contracts.cpp
  * @brief Disposable device doubles verify configuration, ownership and error boundaries.
  */
-#include <tarmac/acquisition/Error.hpp>
-#include <tarmac/acquisition/services/AcquisitionService.hpp>
+#include <tarmac/DataAcquisition/Error.hpp>
+#include <tarmac/DataAcquisition/services/AcquisitionService.hpp>
 #include <stdexcept>
 #include <string>
 #include <type_traits>
@@ -10,25 +10,25 @@ namespace {
 /** @brief Owning sample independent of a storage format. */
 struct Sample { int value; };
 /** @brief Test device counting reads; owns all fixture state. */
-class Device final : public tarmac::acquisition::DeviceAdapter<Sample> {
+class Device final : public tarmac::DataAcquisition::DeviceAdapter<Sample> {
 public:
     int calls = 0;
     bool fail = false;
-    /** @copydoc tarmac::acquisition::DeviceAdapter::read */
+    /** @copydoc tarmac::DataAcquisition::DeviceAdapter::read */
     Sample read() override {
         ++calls;
-        if (fail) throw tarmac::acquisition::Error("device failed");
+        if (fail) throw tarmac::DataAcquisition::Error("device failed");
         return {calls};
     }
 };
 /** @brief Test observer owning counters; no callbacks escape the call. */
-class Monitor final : public tarmac::acquisition::AcquisitionMonitor {
+class Monitor final : public tarmac::DataAcquisition::AcquisitionMonitor {
 public:
     int completed = 0;
     int failed = 0;
-    /** @copydoc tarmac::acquisition::AcquisitionMonitor::read_completed */
+    /** @copydoc tarmac::DataAcquisition::AcquisitionMonitor::read_completed */
     void read_completed() noexcept override { ++completed; }
-    /** @copydoc tarmac::acquisition::AcquisitionMonitor::read_failed */
+    /** @copydoc tarmac::DataAcquisition::AcquisitionMonitor::read_failed */
     void read_failed() noexcept override { ++failed; }
 };
 /** @brief Fail a contract in all build modes.
@@ -40,7 +40,7 @@ void require(bool value) { if (!value) throw std::runtime_error("contract failed
  * @return Zero on success. Exceptions fail the process/test.
  */
 int main() {
-    using namespace tarmac::acquisition;
+    using namespace tarmac::DataAcquisition;
     static_assert(std::has_virtual_destructor_v<DeviceAdapter<Sample>>);
     static_assert(std::has_virtual_destructor_v<AcquisitionMonitor>);
     Device device;

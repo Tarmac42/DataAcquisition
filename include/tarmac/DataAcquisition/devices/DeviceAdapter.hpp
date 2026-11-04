@@ -2,7 +2,7 @@
  * @brief Typed synchronous device-read extension point without hardware drivers.
  */
 #pragma once
-namespace tarmac::acquisition {
+namespace tarmac::DataAcquisition {
 /** @brief Borrowable adapter for one concrete sample type.
  * @tparam Sample Owning application-defined sample value.
  * Concrete adapters own hardware resources via RAII. Reads are synchronous and
